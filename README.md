@@ -24,11 +24,11 @@
 | ------------------ | ---------- | ----------------------------- |
 | name               | string     | null: false                   |
 | detail             | text       | null: false                   |
-| category_id        | string     | null: false                   |
-| condition_id       | string     | null: false                   |
-| delivery_charge_id | string     | null: false                   |
-| delivery_time_id   | string     | null: false                   |
-| prefecture_id      | string     | null: false                   |
+| category_id        | integer     | null: false                   |
+| condition_id       | integer     | null: false                   |
+| delivery_charge_id | integer     | null: false                   |
+| delivery_time_id   | integer     | null: false                   |
+| prefecture_id      | integer     | null: false                   |
 | price              | integer    | null: false                   |
 | user               | references | null: false,foreign_key: true |
 
@@ -53,12 +53,12 @@
 
 | Column        | Type       | Options                       |
 | ------------- | ---------- | ----------------------------- |
-| postal_code   | integer    | null: false                   |
-| prefecture_id | string     | null: false                   |
+| postal_code   | string     | null: false                   |
+| prefecture_id | integer    | null: false                   |
 | municipality  | string     | null: false                   |
 | address       | string     | null: false                   |
 | building_name | string     |                               |
-| phone_number  | integer    | null: false                   |
+| phone_number  | string     | null: false                   |
 | order         | references | foreign_key: true             |
 
 ### Association
