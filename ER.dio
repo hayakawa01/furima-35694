@@ -1,13 +1,13 @@
 <mxfile>
     <diagram id="KGMKNqxaOisE9iRioB6B" name="ページ1">
-        <mxGraphModel dx="437" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="646" dy="635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="15" value="users テーブル" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="40" y="80" width="240" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="- nickname&#10;- email&#10;- password&#10;- password_confirmation&#10;- first_name&#10;- last_name&#10;- first_name_kana&#10;- last_name_kana&#10;- birth_date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="15">
+                <mxCell id="16" value="- nickname&#10;- email&#10;- password&#10;- first_name&#10;- last_name&#10;- first_name_kana&#10;- last_name_kana&#10;- birth_date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="15">
                     <mxGeometry y="30" width="240" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="items テーブル" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
@@ -52,13 +52,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="34" value="" style="endArrow=ERone;html=1;rounded=0;strokeWidth=3;startArrow=ERmany;startFill=0;endFill=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" target="18">
+                <mxCell id="34" value="" style="endArrow=ERone;html=1;rounded=0;strokeWidth=3;startArrow=ERmany;startFill=0;endFill=0;entryX=-0.002;entryY=0.818;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="18">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="279" y="400" as="sourcePoint"/>
                         <mxPoint x="390" y="330" as="targetPoint"/>
                         <Array as="points">
                             <mxPoint x="340" y="400"/>
-                            <mxPoint x="340" y="238"/>
+                            <mxPoint x="340" y="250"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
