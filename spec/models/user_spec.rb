@@ -12,11 +12,6 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
 
-      it 'emailに@が入っていれば登録できる' do
-        @user.email = "test@com"
-        expect(@user).to be_valid
-      end
-
       it 'passwordが６文字以上の半角英数字混合であれば登録できる' do
         @user.password = "000aaa"
         @user.password_confirmation = "000aaa"
@@ -27,6 +22,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'last_nameが全角であれば登録できる' do
+        binding.pry
         @user.last_name = "太郎"
         expect(@user).to be_valid
       end
@@ -59,6 +55,12 @@ RSpec.describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
+
+      it 'emailに@が入っていない場合は登録できない' do
+        @user.email = "testcom"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       
       it 'passwordが空では登録できない' do
         @user.password = ""
@@ -73,7 +75,7 @@ RSpec.describe User, type: :model do
       end
       
       it 'passwordが6文字以上でなければ登録できない' do
-        @user.password = 12343
+        @user.password = "12343"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
