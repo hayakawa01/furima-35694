@@ -22,7 +22,6 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'last_nameが全角であれば登録できる' do
-        binding.pry
         @user.last_name = "太郎"
         expect(@user).to be_valid
       end
