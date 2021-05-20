@@ -13,7 +13,6 @@ RSpec.describe Item, type: :model do
       end
       
       it 'nameが40字以内であれば出品できる' do
-        binding.pry
         @item.name = 'あ' * 40
         expect(@item).to be_valid
       end
@@ -118,7 +117,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")    
       end
-      
+
     end
   end
 end
