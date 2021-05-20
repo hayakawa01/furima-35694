@@ -12,6 +12,17 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       
+      it 'nameが40字以内であれば出品できる' do
+        binding.pry
+        @item.name = 'あ' * 40
+        expect(@item).to be_valid
+      end
+
+      it 'detailが1000字以内であれば出品できる' do
+        @item.detail = 'あ' * 1000
+        expect(@item).to be_valid
+      end
+
       it 'priceが300~9999999であれば出品できる' do
         @item.price = 100000
         expect(@item).to be_valid
@@ -29,13 +40,25 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
+
+      it 'nameが41字以上では出品できない' do
+        @item.name = 'あ'* 41
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+      end
       
       it 'detailが空では出品できない' do
         @item.detail = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Detail can't be blank")
       end
-      
+
+      it 'detailが1001字以上では出品できない' do
+        @item.detail = 'あ' * 1001
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Detail is too long (maximum is 1000 characters)")
+      end
+
       it 'imageが空では出品できない' do
         @item.image = nil
         @item.valid?
@@ -95,6 +118,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")    
       end
+      
     end
   end
 end
