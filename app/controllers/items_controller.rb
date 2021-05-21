@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except:[:index,:show] 
   before_action :choose_item,only:[:show,:edit,:update]
+  before_action :correct_edit,only:[:edit,:update]
 
   def index
     @items = Item.includes(:user).order("id DESC")
@@ -23,9 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @item.user.id
-      redirect_to root_path
-    end
   end
 
   def update
@@ -43,6 +41,12 @@ class ItemsController < ApplicationController
 
   def choose_item
     @item = Item.find(params[:id])
+  end
+
+  def correct_edit
+    unless current_user.id == @item.user.id
+      redirect_to root_path
+    end
   end
 
 end
