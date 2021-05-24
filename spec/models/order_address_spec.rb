@@ -7,7 +7,7 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '購入できる場合'do
-      it '全ての値が正しければ購入できる' do
+      it '全ての値(カード情報と配送先)が正しければ購入できる' do
         expect(@order_address).to be_valid
       end
       
@@ -66,6 +66,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
+      
+      it 'tokenがからであれば購入できない'do
+        @order_params.toke = ''
+        @order_params.valid?
+        expect(@order_params.errors.full_messages).to include("Token number can't be blank")
+      end
+
    end
     
   end
