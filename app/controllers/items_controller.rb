@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def correct_edit
-    unless current_user.id == @item.user.id
+    unless (current_user.id == @item.user.id) && @item.order.nil?
       redirect_to root_path
     end
   end

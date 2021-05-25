@@ -55,22 +55,27 @@ RSpec.describe OrderAddress, type: :model do
       end
 
       it 'phone_numberが空であれば購入できない' do
-        binding.pry
         @order_address.phone_number = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it 'phone_numberが11字以上であれば購入できない' do
+      it 'phone_numberが11字でなければ購入できない' do
         @order_address.phone_number = '12345678901234'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@order_address.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
+      end
+
+      it 'phone_numberが全角であれば購入できない' do
+        @order_address.phone_number = '１２３４５６７８９１０'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
       
-      it 'tokenがからであれば購入できない'do
-        @order_params.toke = ''
-        @order_params.valid?
-        expect(@order_params.errors.full_messages).to include("Token number can't be blank")
+      it 'tokenが空であれば購入できない'do
+        @order_address.token = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
 
    end
