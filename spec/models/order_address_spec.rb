@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   describe "購入情報の登録" do
     before do
-      @order_address = FactoryBot.build(:order_address)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @order_address = FactoryBot.build(:order_address, user_id: @user.id, item_id: @item.id)
+      sleep 0.2
     end
 
     context '購入できる場合'do
