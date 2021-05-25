@@ -66,6 +66,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
       end
 
+      it 'phone_numberが半角英数字混合であれば購入できない' do
+        @order_address.phone_number = '090abcd1234'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
+
       it 'phone_numberが全角であれば購入できない' do
         @order_address.phone_number = '１２３４５６７８９１０'
         @order_address.valid?
