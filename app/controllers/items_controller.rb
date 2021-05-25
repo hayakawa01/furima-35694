@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except:[:index,:show] 
-  before_action :choose_item,only:[:show,:edit,:update]
+  before_action :choose_item,only:[:show,:edit,:update,:destroy]
   before_action :correct_edit,only:[:edit,:update,:destroy]
 
   def index
@@ -35,8 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item.destroy
     redirect_to root_path
   end
 
@@ -50,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def correct_edit
-    unless (current_user.id == @item.user.id) && @item.order.nil?
+    unless current_user.id == @item.user_id
       redirect_to root_path
     end
   end
